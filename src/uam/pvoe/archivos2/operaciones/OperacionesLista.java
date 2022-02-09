@@ -30,6 +30,14 @@ public class OperacionesLista {
         Alumno al = (Alumno)listaAlumnos.get(posicion);
         return al;
     }
+    public LinkedList regresarAlumnoEsc(LinkedList listaAlumnos, int posicion){
+        LinkedList<Alumno> lista1 = new LinkedList<Alumno>();
+        for(int i = 0; i<posicion; i++){
+           Alumno al = (Alumno)listaAlumnos.get(posicion);
+           lista1.add(al);
+        }
+        return lista1;
+    }
     
     public LinkedList borrarAlumno(LinkedList listaAlumnos, int posicion){
         listaAlumnos.remove(posicion);
@@ -47,15 +55,27 @@ public class OperacionesLista {
         }
         return posicion;
     }
-    public int buscarAlumnoEsc(LinkedList listaAlumnos, String procedencia){
-        int posicion = -1;
-        for(int i = 0; i<listaAlumnos.size(); i++){
-            Alumno al = (Alumno)listaAlumnos.get(i);
-            if(al.getProcedencia().compareTo(procedencia) == 0){
-                posicion = i;
-                break;
+    
+    public static void mostrarAlumnoEsc(LinkedList lista, String procedencia){
+        
+        System.out.println("Students from school " + procedencia + 
+                " are the following:\n");
+        for(int i = 0; i<lista.size(); i++){
+                Alumno al = (Alumno)lista.get(i);
+                if(al.getProcedencia().compareTo(procedencia) == 0){
+                    System.out.println(al.toString());
+                }
+            }
+    }
+    
+    public static void mostrarPuntaje(LinkedList lista, int puntaje){
+        System.out.println("Students with score close to " + puntaje + 
+                " are the following:\n");
+        for(int i = 0; i < lista.size(); i++){
+            Alumno al = (Alumno)lista.get(i);
+            if(al.getPuntaje() >= puntaje){
+                System.out.println(al.toString());
             }
         }
-        return posicion;
     }
 }
