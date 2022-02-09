@@ -50,10 +50,10 @@ public class Alumno {
     @Override
     public String toString() {
         return 
-               "\nMatricula: " + matricula + 
-               "\nNombre: " + nombre + 
-               "\nProcedencia: " + procedencia + 
-               "\nPuntaje:" + puntaje + "\n";
+               "\nRegistration number: " + matricula + 
+               "\nScore: " + nombre + 
+               "\nSchool: " + procedencia + 
+               "\nScore: " + puntaje + "\n";
     }
 
     
