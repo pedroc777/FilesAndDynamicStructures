@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,17 +20,16 @@ import uam.pvoe.archivos2.clases.Alumno;
  * @author pedro
  */
 public class Lectura {
-    public Alumno leer(String nombreArchivo){
+    public LinkedList leer(String nombreArchivo){
         String cadenaLeida = "";
         FileReader fr;
         BufferedReader archivoLectura;
         
-        Alumno alumno2 = new Alumno();
+        LinkedList<Alumno> lista1 = new LinkedList<Alumno>();
         
         try{
             fr = new FileReader(nombreArchivo);
             archivoLectura = new BufferedReader(fr);
-            System.out.println("Los alumnos son: ");
             cadenaLeida = archivoLectura.readLine();
             
             while(cadenaLeida!=null){
@@ -39,12 +39,7 @@ public class Lectura {
                 alumno.setNombre(st.nextToken());
                 alumno.setProcedencia(st.nextToken());
                 alumno.setPuntaje(Integer.parseInt(st.nextToken()));
-                
-                alumno2 = alumno;
-                
-                //System.out.println("Alumno: " + alumno.toString());
-                
-                //System.out.println("Alumno: " + cadenaLeida);
+                lista1.add(alumno);
                 cadenaLeida = archivoLectura.readLine();
             }
             archivoLectura.close();
@@ -55,7 +50,6 @@ public class Lectura {
         catch(IOException ex){
             Logger.getLogger(Lectura.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return alumno2;
+        return lista1;
     }
 }
